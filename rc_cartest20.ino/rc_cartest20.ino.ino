@@ -203,6 +203,18 @@ void loop()
     //else wheels.write(output);
     esc.write(75);
     delay(10);
+
+    if (xbee.available() > 0) {   // check if there is input msg
+    String msg  = "";
+
+    // Read in message
+    while(xbee.available() > 0) {
+      msg += char(xbee.read());
+    }
+    if(msg.equals("T")){
+
+      wheels.write(180);
+    }
     //if(dis2 > 70 || dis3 > 70){
      // wheels.write(90+output);
    // }
