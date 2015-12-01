@@ -67,12 +67,12 @@ sp.on("open", function () {
   requestRSSI();
   setInterval(requestRSSI, sampleDelay);
 });
-var turn = function(){
+/*var turn = function(){
 
 sp.on("open", function(){
   sp.write("T");
 });
-}
+}*/
 
 var s = [];
 var distance  = [];
@@ -637,7 +637,7 @@ io.emit('action',10 );
 }
 else if(i == 10 ){
 io.emit('action',11 );
-turn();
+sp.write("T");
 }
 else if(i == 11 ){
 io.emit('action',12 );
@@ -647,7 +647,7 @@ io.emit('action',13 );
 }
 else if(i == 13 ){
 io.emit('action',14 );
-turn();
+sp.write("T");
 }
 else if(i == 14 ){
 io.emit('action',15 );
@@ -687,7 +687,7 @@ io.emit('action',25 );
 }
 else if(i == 25 ){
 io.emit('action',26 );
-turn();
+sp.write("T");
 }
 else if(i == 26 ){
 io.emit('action',27 );
