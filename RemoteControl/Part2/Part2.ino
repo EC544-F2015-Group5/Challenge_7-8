@@ -4,6 +4,8 @@
 #include <I2C.h>
 #include <SoftwareSerial.h>
 
+
+char buffer;
 #define    LIDARLite_ADDRESS   0x62          // Default I2C Address of LIDAR-Lite.
 #define    RegisterMeasure     0x00          // Register to write to initiate ranging.
 #define    MeasureValue        0x04          // Value to initiate ranging.
@@ -192,18 +194,22 @@ void loop()
     delay(10);
 
     if (xbee.available() > 0) {   // check if there is input msg
-    String msg  = "";
+    buffer = xbee.read();
+
+    delay(3);
 
     // Read in message
-    while(xbee.available() > 0) {
-      msg += char(xbee.read());
-    }
-    if (msg.equals("START\n")) {
-      Serial.println(msg);                        
+//    while(xbee.available() > 0) {
+//      msg += char(xbee.read());
+//    }
+    if (buffer == '1') {
+      esc.write(80);
+      xbee.println("Run");                        
     
-    } else if (msg.equals("STOP\n")) {
-      Serial.println(msg);
-    }else if(msg.equals("T")){
+    } else if (buffer == '2') {
+      esc.write(90);
+      xbee.println("Stop");
+    }else if(buffer == 'T'){
 
       wheels.write(180);
     }
