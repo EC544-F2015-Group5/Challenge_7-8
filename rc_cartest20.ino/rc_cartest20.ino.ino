@@ -2,12 +2,13 @@
 #include <PID_v1.h>
 #include <Servo.h>
 #include <I2C.h>
+#include <SoftwareSerial.h>
 
 #define    LIDARLite_ADDRESS   0x62          // Default I2C Address of LIDAR-Lite.
 #define    RegisterMeasure     0x00          // Register to write to initiate ranging.
 #define    MeasureValue        0x04          // Value to initiate ranging.
 #define    RegisterHighLowB    0x8f          // Register to get both High and Low bytes in 1 call.
-
+SoftwareSerial xbee(10,11);
 double input,output,setpoint;
 PID pid0(&input,&output,&setpoint,3.0,0.05,0.0000839,DIRECT);
 Servo myservo;
@@ -32,7 +33,7 @@ void setup()
   // Serial out
  
   Serial.begin(9600);
-
+  xbee.begin(9600);
   // Servo control
   myservo.attach(5); 
   wheels.attach(8); // initialize wheel servo to Digital IO Pin #8
@@ -214,6 +215,7 @@ void loop()
     if(msg.equals("T")){
 
       wheels.write(180);
+    }
     }
     //if(dis2 > 70 || dis3 > 70){
      // wheels.write(90+output);
