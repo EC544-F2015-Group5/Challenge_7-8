@@ -1,0 +1,324 @@
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Map</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+  <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+      <script type="text/javascript" src="js/paper-full.js"></script>
+        <style type="text/css">
+  	div.Total {
+		    position: absolute;
+		    top: 10%;
+		    left: 17%;
+		    width: 90%;
+		    height: 80%;
+		}
+    div.Point {
+    position:absolute;
+    margin-top: 100px;
+    margin-left: 400px;
+    width:20px;
+    height:20px;
+    background: white;
+    -moz-border-radius:50px;
+    -webkit-border-radius:50px;
+    border-radius:50px;
+    }
+    div.Point1 {
+    margin-left: 550px;
+    margin-top:100px;
+    width:20px;
+    height:20px;
+    background: white;
+    -moz-border-radius:50px;
+    -webkit-border-radius:50px;
+    border-radius:50px;
+    }
+        div.Point2 {
+     margin-left: 380px;
+    margin-top:180px;
+    width:20px;
+    height:20px;
+    background: white;
+    -moz-border-radius:50px;
+    -webkit-border-radius:50px;
+    border-radius:50px;
+    }
+        div.Point3 {
+      margin-left: 550px;
+    width:20px;
+    height:20px;
+    background: white;
+    -moz-border-radius:50px;
+    -webkit-border-radius:50px;
+    border-radius:50px;
+    }
+        div.Point4 {
+      margin-left: 380px;
+    margin-top:120px;
+    width:20px;
+    height:20px;
+    background: white;
+    -moz-border-radius:50px;
+    -webkit-border-radius:50px;
+    border-radius:50px;
+    }
+        div.Point5 {
+      margin-left: 550px;
+    width:20px;
+    height:20px;
+    background: white;
+    -moz-border-radius:50px;
+    -webkit-border-radius:50px;
+    border-radius:50px;
+    }
+        div.Point6 {
+      margin-left: 380px;
+    margin-top: 150px;
+    width:20px;
+    height:20px;
+    background: white;
+    -moz-border-radius:50px;
+    -webkit-border-radius:50px;
+    border-radius:50px;
+    }
+        div.Point7 {
+      margin-left: 550px;
+    width:20px;
+    height:20px;
+    background: white;
+    -moz-border-radius:50px;
+    -webkit-border-radius:50px;
+    border-radius:50px;
+    }
+        div.Point8 {
+      margin-left: 450px;
+    margin-top: 100px;
+    width:20px;
+    height:20px;
+    background: white;
+    -moz-border-radius:50px;
+    -webkit-border-radius:50px;
+    border-radius:50px;
+    }
+	</style>
+       <script type="text/paperscript" canvas="canvas">
+        project.importSVG(document.getElementById('svg'));
+
+        // <text font-size="20" font-family="times" x="533.4" y="140" >1</text>
+        // <text font-size="20" font-family="times" x="810.6" y="115" >2</text>
+        // <text font-size="20" font-family="times" x="533.4" y="290" >3</text>
+        // <text font-size="20" font-family="times" x="810.6" y="285" >4</text>
+
+        // <text font-size="20" font-family="times" x="533.4" y="470" >5</text>
+        // <text font-size="20" font-family="times" x="810.6" y="455" >6</text>
+
+        // <text font-size="20" font-family="times" x="533.4" y="615" >7</text>
+        // <text font-size="20" font-family="times" x="810.6" y="610" >8</text>
+
+        // <text font-size="20" font-family="times" x="672" y="770" >9</text>
+    </script>
+</head>
+<body >
+  <h1 style="text-align: center">Localization Arduino</h1>
+     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="0" height="0" style="visibility:hidden" id="svg">
+
+        <!-- Small version graph -->
+        <path id="lineAB" d="M 450 80 l 75 0" stroke="black" stroke-width="3px" fill="none" />
+        <path id="lineBC" d="M 525 80 l 0 -66" stroke="black" stroke-width="3px" fill="none" />
+        <path id="lineCD" d="M 525 14 l 400.2 0" stroke="black" stroke-width="3px" fill="none" />
+        <path id="lineDE" d="M 925.2 14 l 0 76.8" stroke="black" stroke-width="3px" fill="none" />
+        <path id="lineEF" d="M 925.2 90.8 l 24 0" stroke="black" stroke-width="3px" fill="none" />
+        <path id="lineFG" d="M 949.2 90.8 l 0 600" stroke="black" stroke-width="3px" fill="none" />
+        <path id="lineGH" d="M 949.2 690.8 l -24 0" stroke="black" stroke-width="3px" fill="none" />
+        <path id="lineHI" d="M 925.2 690.8 l 0 76.8" stroke="black" stroke-width="3px" fill="none" />
+        <path id="lineIJ" d="M 925.2 767.6 l -24 0" stroke="black" stroke-width="3px" fill="none" />
+        <path id="lineJK" d="M 901.2 767.6 l 0 76.8" stroke="black" stroke-width="3px" fill="none" />
+        <path id="lineKL" d="M 901.2 844.4 l -446.4 0" stroke="black" stroke-width="3px" fill="none" />
+        <path id="lineLM" d="M 454.8 844.4 l 0 -207" stroke="black" stroke-width="3px" fill="none" />
+        <path id="lineMN" d="M 454.8 637.4 l -60 0" stroke="black" stroke-width="3px" fill="none" />
+        <path id="lineNO" d="M 394.8 637.4 l 0 -475.8" stroke="black" stroke-width="3px" fill="none" />
+        <path id="lineOP" d="M 394.8 161.6 l 55.2 0" stroke="black" stroke-width="3px" fill="none" />
+        <path id="linePA" d="M 450 161.6 l 0 -81.6" stroke="black" stroke-width="3px" fill="none" />
+        <!-- Partation -->
+
+        <path id="lineab" d="M 672 14 l 0 667.8" stroke="black" stroke-width="1px" stroke-dasharray="5,5" fill="none" />
+        <path id="linec" d="M 394.8 194 l 277.2 0" stroke="black" stroke-width="1px" stroke-dasharray="5,5" fill="none" />
+        <path id="lined" d="M 394.8 356.6 l 277.2 0" stroke="black" stroke-width="1px" stroke-dasharray="5,5" fill="none" />
+        <path id="linee" d="M 394.8 519.2 l 277.2 0" stroke="black" stroke-width="1px" stroke-dasharray="5,5" fill="none" />
+        <path id="linef" d="M 454.8 681.8 l 217.2 0" stroke="black" stroke-width="1px" stroke-dasharray="5,5" fill="none" />
+
+        <path id="lineg" d="M 949.2 180 l -277.2 0" stroke="black" stroke-width="1px" stroke-dasharray="5,5" fill="none" />
+        <path id="lineh" d="M 949.2 342.6 l -277.2 0" stroke="black" stroke-width="1px" stroke-dasharray="5,5" fill="none" />
+        <path id="linei" d="M 949.2 505.2 l -277.2 0" stroke="black" stroke-width="1px" stroke-dasharray="5,5" fill="none" />
+        <path id="linej" d="M 949.2 667.8 l -277.2 0" stroke="black" stroke-width="1px" stroke-dasharray="5,5" fill="none" />
+        <g id="a" fill="blue" stroke="none" text-anchor="middle">
+            <text font-size="20" font-family="times" x="533.4" y="124" >1</text>
+            <text font-size="20" font-family="times" x="810.6" y="95" >2</text>
+            <text font-size="20" font-family="times" x="533.4" y="277" >3</text>
+            <text font-size="20" font-family="times" x="810.6" y="270" >4</text>
+            <text font-size="20" font-family="times" x="533.4" y="458" >5</text>
+            <text font-size="20" font-family="times" x="810.6" y="440" >6</text>
+            <text font-size="20" font-family="times" x="533.4" y="600" >7</text>
+            <text font-size="20" font-family="times" x="810.6" y="590" >8</text>
+            <text font-size="20" font-family="times" x="672" y="800" >9</text>
+        </g>
+        <!-- Mark beacons' points -->
+        <g stroke="blue" stroke-width="3" fill="blue">
+            <circle id="Beacon1" cx="525" cy="80" r="3" />
+            <circle id="Beacon2" cx="935" cy="90.8" r="3" />
+            <circle id="Beacon3" cx="480" cy="844.4" r="3" />
+            <circle id="Beacon4" cx="901.2" cy="780" r="3" />
+        </g>
+        <!-- Label the Beacons -->
+        <g fill="blue" stroke="none" text-anchor="middle">
+            <text font-size="20" font-family="times" x="525" y="75" dx="-50" dy="-5">BeaconA</text>
+            <text font-size="20" font-family="times" x="935" y="82" dx="40">BeaconB</text>
+            <text font-size="20" font-family="times" x="480" y="844.4" dy="30">BeaconC</text>
+            <text font-size="20" font-family="times" x="901.2" y="790" dx="50" >BeaconD</text>
+        </g>
+        <!-- Label -->
+        <g stroke="blue" stroke-width="3" fill="blue">
+            <circle cx="125" cy="270" r="3" />
+        </g>
+        <g fill="blue" stroke="none" text-anchor="middle">
+            <text font-size="20" font-family="times" x="225" y="275" >Beacon's location</text>
+        </g>
+
+        <g stroke="red" stroke-width="3" fill="red">
+            <circle cx="125" cy="320" r="10" />
+        </g>
+        <g fill="red" stroke="none" text-anchor="middle">
+            <text font-size="20" font-family="times" x="225" y="325" >Arduino's location</text>
+        </g>
+
+
+
+
+    </svg>
+    <canvas id="canvas" width="1350" height="1000"></canvas>
+    <div>
+    <div class="Total">
+     <div id="1" class="Point"  ></div>
+     <div id="2" class="Point1"  ></div>
+     <div id="3" class="Point2" ></div>
+     <div id="4" class="Point3"  ></div>
+     <div id="5" class="Point4"  ></div>
+     <div id="6" class="Point5"  ></div>
+     <div id="7" class="Point6"  ></div>
+     <div id="8" class="Point7"  ></div>
+     <div id="9" class="Point8"  ></div>
+    </div>
+   <ul id="messages"></ul>
+    <script src="/socket.io/socket.io.js"></script>
+<script type="text/paperscript" canvas="canvas">
+
+  var socket = io();
+  socket.on('action', function(data){
+    var div = document.getElementById("1");
+    var div1 = document.getElementById("2");
+    var div2 = document.getElementById("3");
+    var div3 = document.getElementById("4");
+    var div4 = document.getElementById("5");
+    var div5 = document.getElementById("6");
+    var div6 = document.getElementById("7");
+    var div7 = document.getElementById("8");
+    var div8 = document.getElementById("9");
+    if(data=="1"){
+      div.style.backgroundColor = "red";
+      div1.style.backgroundColor = "white";
+      div2.style.backgroundColor = "white";
+      div3.style.backgroundColor = "white";
+      div4.style.backgroundColor = "white";
+      div5.style.backgroundColor = "white";
+      div6.style.backgroundColor = "white";
+      div7.style.backgroundColor = "white";
+      div8.style.backgroundColor = "white";
+    }else if(data=="2"){
+      div.style.backgroundColor = "white";
+      div1.style.backgroundColor = "red";
+      div2.style.backgroundColor = "white";
+      div3.style.backgroundColor = "white";
+      div4.style.backgroundColor = "white";
+      div5.style.backgroundColor = "white";
+      div6.style.backgroundColor = "white";
+      div7.style.backgroundColor = "white";
+      div8.style.backgroundColor = "white";
+    }else if(data=="3"){
+      div.style.backgroundColor = "white";
+      div1.style.backgroundColor = "white";
+      div2.style.backgroundColor = "red";
+      div3.style.backgroundColor = "white";
+      div4.style.backgroundColor = "white";
+      div5.style.backgroundColor = "white";
+      div6.style.backgroundColor = "white";
+      div7.style.backgroundColor = "white";
+      div8.style.backgroundColor = "white";
+    }else if(data=="4"){
+      div.style.backgroundColor = "white";
+      div1.style.backgroundColor = "white";
+      div2.style.backgroundColor = "white";
+      div3.style.backgroundColor = "red";
+      div4.style.backgroundColor = "white";
+      div5.style.backgroundColor = "white";
+      div6.style.backgroundColor = "white";
+      div7.style.backgroundColor = "white";
+      div8.style.backgroundColor = "white";
+    }else if(data=="5"){
+      div.style.backgroundColor = "white";
+      div1.style.backgroundColor = "white";
+      div2.style.backgroundColor = "white";
+      div3.style.backgroundColor = "white";
+      div4.style.backgroundColor = "red";
+      div5.style.backgroundColor = "white";
+      div6.style.backgroundColor = "white";
+      div7.style.backgroundColor = "white";
+      div8.style.backgroundColor = "white";
+    }else if(data=="6"){
+      div.style.backgroundColor = "white";
+      div1.style.backgroundColor = "white";
+      div2.style.backgroundColor = "white";
+      div3.style.backgroundColor = "white";
+      div4.style.backgroundColor = "white";
+      div5.style.backgroundColor = "red";
+      div6.style.backgroundColor = "white";
+      div7.style.backgroundColor = "white";
+      div8.style.backgroundColor = "white";
+
+    }else if(data=="7"){
+      div.style.backgroundColor = "white";
+      div1.style.backgroundColor = "white";
+      div2.style.backgroundColor = "white";
+      div3.style.backgroundColor = "white";
+      div4.style.backgroundColor = "white";
+      div5.style.backgroundColor = "white";
+      div6.style.backgroundColor = "red";
+      div7.style.backgroundColor = "white";
+      div8.style.backgroundColor = "white";
+
+    }else if(data=="8"){
+      div.style.backgroundColor = "white";
+      div1.style.backgroundColor = "white";
+      div2.style.backgroundColor = "white";
+      div3.style.backgroundColor = "white";
+      div4.style.backgroundColor = "white";
+      div5.style.backgroundColor = "white";
+      div6.style.backgroundColor = "white";
+      div7.style.backgroundColor = "red";
+      div8.style.backgroundColor = "white";
+    }else if(data=="9"){
+      div.style.backgroundColor = "white";
+      div1.style.backgroundColor = "white";
+      div2.style.backgroundColor = "white";
+      div3.style.backgroundColor = "white";
+      div4.style.backgroundColor = "white";
+      div5.style.backgroundColor = "white";
+      div6.style.backgroundColor = "white";
+      div7.style.backgroundColor = "white";
+      div8.style.backgroundColor = "red";
+    }
+  });
+</script>
+</body>
+</html>
