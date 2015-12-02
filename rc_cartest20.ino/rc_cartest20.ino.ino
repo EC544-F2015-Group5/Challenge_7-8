@@ -102,6 +102,14 @@ int lidarGetRangeRight(void)
   return val;
 }
 
+//void serialPrintRange(int pos, int distance)
+//{
+//    Serial.print("Position (deg): ");
+//    Serial.print(pos);
+//    Serial.print("\t\tDistance (cm): ");
+//    Serial.println(distance);
+//}
+
 void calibrateESC(){
     esc.write(180); // full backwards
     delay(startupDelay);
@@ -156,8 +164,14 @@ void loop()
   enableDisableSensor(2);
   double dis2 = readDistance()/2.54;
   input = radToDeg(atan(abs(dis2 - dis3)/4.4));
-
+  //input = abs(dis2 - dis3)/6.5;
+  //input = dis3;
+  //if (input > 100) {
+  //  setpoint = input;
+ // }
+ // else {
     setpoint = 45;
+ // }
     Serial.print(input);
     Serial.print("       ");
     pid0.Compute();
@@ -169,7 +183,7 @@ void loop()
     { wheels.write(wheels.read()+4);}
     else if(dis2>dis3)
      { 
-      wheels.write(abs((wheels.read()-output/3.75 )));
+      wheels.write(abs((wheels.read()-output/3.449 )));
    
     delay(10);   
    
@@ -198,16 +212,32 @@ void loop()
     while(xbee.available() > 0) {
       msg += char(xbee.read());
     }
-    if (msg.equals("START\n")) {
-      Serial.println(msg);                        
-    
-    } else if (msg.equals("STOP\n")) {
-      Serial.println(msg);
-    }else if(msg.equals("T")){
+    if(msg.equals("T\n")){
 
       wheels.write(180);
     }
     }
+    //if(dis2 > 70 || dis3 > 70){
+     // wheels.write(90+output);
+   // }
+    //
+//
+    //distanceright = sonar(7);
+    //distanceleft = sonar(6);
+    //serialPrintRange(pos, distance); 
+
+    //turn(distanceright,distanceleft,getLidarRange()); 
+    
+//   esc.write(75);
+//    IR(0);
+//   //IR(1);
+
+//  enableDisableSensor(2); // Turn on sensor attached to pin 2 and disable all others
+//  Serial.print("Left: "); // Print "." to separate readings
+//  Serial.println(readDistance()); // Read Distance from Sensor
+//  enableDisableSensor(3); //Turn on sensor attached to pin 3 and disable all others
+//  Serial.print(readDistance()); // Read Distance from Sensor
+//  Serial.println("Right: "); // Print "." to separate readings
   delay(10);
 
 }
