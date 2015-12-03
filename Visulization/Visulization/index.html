@@ -1,0 +1,93 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Crawler Visulization</title>
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+	<script src="js/jquery-1.11.0.min.js"></script>
+	<link rel="stylesheet" href="css/controlPad.css" type = "text/css" media= "all" charset="utf-8">
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+	<!-- Custom Theme files -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script src="js/prefixfree.min.js"></script>
+
+</head>
+<body>
+	<!--header start here-->
+	<div class="header">
+		<h3 class="main-head">Visulization</h3>
+		<!--Left part start here-->
+		<div class="header-bottom">
+			<div class="col-md-4 header-bot-left">
+			<!--Camera control start here-->
+			<div class="user-profile">
+				<div class="today-status" style="background-color:#474f70">
+					<div class="today-text"><h6>Webcam</h6></div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="user-prof-top" style="height:300px; background-color:#fafafa">
+        <!-- Get Webcan -->
+
+
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<!--camera control end here-->
+
+			<!--Remote control start here-->
+			<div class="ring-states">
+				<div class="today-status">
+					<div class="today-text">
+							<h6>Remote control</h6>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+
+				<div>
+					<!-- Control Pad -->
+					<!-- Forward Back Left Right -->
+					<div class="dpad-pane">
+						<div class="dpad-hole"></div>
+						<div id="dpad">
+							<canvas height="150" id="dpad-body" width="150"></canvas>
+							<button class="button" id="up"></button>
+							<button class="button" id="right">
+							</button><button class="button" id="down"></button>
+							<button class="button" id="left"></button>
+						</div>
+					</div>
+
+
+					<!-- Control Crawler Start or Stop -->
+					<div class="action-pane">
+						<div class="buttons">
+							<label class="label">Start<button class="button" id="b"></button></label>
+							<label class="label">Stop<button class="button" id="a"></button></label>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+			<!--Remote control end here-->
+		</div>
+	</div>
+  <!--End left part-->
+
+	<!--Right Part-->
+	<div class="col-md-8 header-bot-right">
+		<!--Localization start here-->
+		<div class="analytic">
+			<div class="analytic-top">
+				<div class="infograpy"><h5>Localization</h5></div>
+				<div class="clearfix"> </div>
+				<div style="height:620px; ">
+					<!-- Localization -->
+				</div>
+			</div>
+    </div>
+
+</body>
+<script src="js/index.js"></script>
+</html>
