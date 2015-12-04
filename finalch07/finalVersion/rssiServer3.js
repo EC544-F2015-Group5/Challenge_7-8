@@ -57,15 +57,23 @@ var RSSIRequestPacket = {
   data: "test"
 }
 
+var turnPacket = {
+  type: C.FRAME_TYPE.ZIGBEE_TRANSMIT_REQUEST,
+  destination64: "000000000000ffff",
+  broadcastRadius: 0x01,
+  options: 0x00,
+  data: "T"
+}
 var requestRSSI = function(){
   sp.write(XBeeAPI.buildFrame(RSSIRequestPacket));
 }
 
 sp.on("open", function () {
-
+	
   console.log('open');
   requestRSSI();
   setInterval(requestRSSI, sampleDelay);
+  
 });
 /*var turn = function(){
 

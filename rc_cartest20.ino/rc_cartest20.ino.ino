@@ -1,14 +1,30 @@
+#include <Time.h>
+
 #include <Wire.h>
 #include <PID_v1.h>
 #include <Servo.h>
 #include <I2C.h>
 #include <SoftwareSerial.h>
-
+#include <XBee.h>
 #define    LIDARLite_ADDRESS   0x62          // Default I2C Address of LIDAR-Lite.
 #define    RegisterMeasure     0x00          // Register to write to initiate ranging.
 #define    MeasureValue        0x04          // Value to initiate ranging.
 #define    RegisterHighLowB    0x8f          // Register to get both High and Low bytes in 1 call.
-SoftwareSerial xbee(10,11);
+//SoftwareSerial xbee(10,11);
+
+SoftwareSerial xbeeSerial(10,11);
+XBee xbee = XBee();
+
+XBeeResponse response  = XBeeResponse();
+
+ZBRxResponse rx = ZBRxResponse();
+
+ZBTxStatusResponse txStatus = ZBTxStatusResponse();
+AtCommandResponse atResponse = AtCommandResponse();
+
+XBeeAddress64 broadcastAddr = XBeeAddress64(0x00000000, 0x0000FFFF); 
+
+
 double input,output,setpoint;
 PID pid0(&input,&output,&setpoint,3.0,0.05,0.0000839,DIRECT);
 Servo myservo;
@@ -28,12 +44,17 @@ void start_sensor(){
   delay(1);
   digitalWrite(triggerPin1,LOW);
 }
+float timer;
 void setup()
 {
   // Serial out
- 
+  timer = second();
   Serial.begin(9600);
-  xbee.begin(9600);
+  xbeeSerial.begin(9600);
+  
+ 
+  xbee.setSerial(xbeeSerial);
+  
   // Servo control
   myservo.attach(5); 
   wheels.attach(8); // initialize wheel servo to Digital IO Pin #8
@@ -56,7 +77,26 @@ void setup()
 }
 
 // Get a measurement from the LIDAR Lite
-
+void processResponse(){
+  if (xbee.getResponse().isAvailable()) {
+      // got something
+      //xbee conntected
+      if (xbee.getResponse().getApiId() == ZB_RX_RESPONSE) {
+        // got a zb rx packet
+        
+        // now fill our zb rx class
+        xbee.getResponse().getZBRxResponse(rx);
+         
+            
+         String msg = String(rx.getData()[0]);
+       // int id = int(xbee.getResponse().getFrameData()[10]);
+               
+        
+          wheels.write(180);
+        
+      }
+  }
+}
 int lidarGetRangeLeft(void)
 {  
 pulse_width = pulseIn(3, HIGH); // Count how long the pulse is high in microseconds
@@ -72,6 +112,8 @@ pulse_width = pulseIn(3, HIGH); // Count how long the pulse is high in microseco
   }
   delay(1); //Delay so we don't overload the serial port
 }
+
+
 
 int lidarGetRangeRight(void)
 {  
@@ -155,7 +197,22 @@ void turn(int distanceright,int distanceleft,int front)
 
 void loop()
 {  //distance for sonar sensor
+  float x = second();
+  
+ //  xbee.readPacket();
+  //processResponse();
+  
+   String received;
+    if(Serial.available()){
+      received += Serial.read();
+      Serial.println(Serial.read());
+      if(received.equals("T\n")){
+        wheels.write(0); delay(3650);
+      }
+    }
   start_sensor();
+
+  
   distance1 = analogRead(anPin1)/2;
   delay(50);
  // if(distance1 < 12){esc.write(95);delay(10);wheels.write(wheels.read()+5);esc.write(70);}
@@ -163,6 +220,9 @@ void loop()
   double dis3 = readDistance()/2.54;
   enableDisableSensor(2);
   double dis2 = readDistance()/2.54;
+   if(dis2 >=400 ){
+      wheels.write(0);delay(3750);
+    }
   input = radToDeg(atan(abs(dis2 - dis3)/4.4));
   //input = abs(dis2 - dis3)/6.5;
   //input = dis3;
@@ -172,10 +232,10 @@ void loop()
  // else {
     setpoint = 45;
  // }
-    Serial.print(input);
-    Serial.print("       ");
+   // Serial.print(input);
+   // Serial.print("       ");
     pid0.Compute();
-    Serial.println(output);
+   // Serial.println(output);
     //if (dis2 < 70  && dis3 < 70){
     //if ((dis2 > dis3) && (wheels.read()+ 4 <90))
    
@@ -197,26 +257,14 @@ void loop()
       wheels.write(abs((wheels.read()+output/2)));
       
       }
-     // else if (dis2 >70 || dis3 >70){
-      //  wheels.write(output);
-     // }
     
-    //else wheels.write(output);
+    
+    
     esc.write(75);
     delay(10);
-
-    if (xbee.available() > 0) {   // check if there is input msg
-    String msg  = "";
-
-    // Read in message
-    while(xbee.available() > 0) {
-      msg += char(xbee.read());
-    }
-    if(msg.equals("T\n")){
-
-      wheels.write(180);
-    }
-    }
+   
+    
+   
     //if(dis2 > 70 || dis3 > 70){
      // wheels.write(90+output);
    // }
@@ -238,7 +286,9 @@ void loop()
 //  enableDisableSensor(3); //Turn on sensor attached to pin 3 and disable all others
 //  Serial.print(readDistance()); // Read Distance from Sensor
 //  Serial.println("Right: "); // Print "." to separate readings
+  
   delay(10);
+  
 
 }
  /* Convert degree value to radians */
