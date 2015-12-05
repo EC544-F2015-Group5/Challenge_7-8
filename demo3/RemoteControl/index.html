@@ -13,7 +13,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<script src="js/prefixfree.min.js"></script>
-
+	<script src="js/keyboard.js"></script>
+	
 </head>
 <body>
 	
@@ -38,9 +39,10 @@
 				<div class="clearfix"> </div>
 			</div>
 			<!--camera control end here-->
-
+			
+			<!--<button onclick="showkey()" >KeyBoard Control</button>-->
 			<!--Remote control start here-->
-			<div class="ring-states">
+			<div class="ring-states">											
 				<div class="today-status">
 					<div class="today-text">
 							<h6>Remote control</h6>
@@ -66,7 +68,7 @@
 					<!-- Control Crawler Start or Stop -->
 					<div class="action-pane">
 						<div class="buttons">
-							<label class="label">Start<button onclick="forward()" class="button" id="b"></button></label>
+							<label class="label">Start<button onclick="start()" class="button" id="b"></button></label>
 							<label class="label">Stop<button onclick="stop()" class="button" id="a"></button></label>
 						</div>
 					</div>
@@ -161,28 +163,13 @@
 </script>
 <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-<script>
-/*
-  var socket = io();
-  $('form').submit(function(){
-    socket.emit('chat message', $('#m').val());
-    $('#m').val('');
-    return false;
-  });
+<script ></script>
 
-  socket.on('chat message', function(msg){
-    $('#messages').append($('<li>').text(msg));
-  });
-*/
-//   var buttonF = document.getElementById("up");
-//   var buttonB = document.getElementById("down");
-//   var buttonL = document.getElementById("left");
-//   var buttonR = document.getElementById("right");
-//   var buttonM = document.getElementById("a");
+<script>
 
   function forward()
   {
-  	sendCtrlMsg("F");
+  	sendCtrlMsg("C");
   }
 
   function backward()
@@ -194,7 +181,11 @@
   {
   	sendCtrlMsg("L");
   }
-
+  function start()
+  {
+	sendCtrMsg("F")
+  }
+  
   function right()
   {
   	sendCtrlMsg("R");
