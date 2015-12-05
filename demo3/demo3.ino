@@ -219,7 +219,7 @@ void loop()
   enableDisableSensor(2);
   double dis2 = readDistance()/2.54;
   Serial.println(dis2);
-   if(dis2 >=400 ){
+   if(dis2 >=200 ){
       count++;
     }else{
       count=0;
