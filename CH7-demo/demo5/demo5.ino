@@ -38,7 +38,7 @@ int triggerPin1 = 13;
 long distance1;
 int sensorPins[] = {2,3}; // Array of pins connected to the sensor Power Enable lines
 int sensorPinsArraySize = 2; // The length of the array
-const int anPin1 = 4;
+const int anPin1 = 0;
 unsigned long pulse_width;
 int pinReceptor = A1;
 int sensorVal;
@@ -219,8 +219,8 @@ void loop()
   double dis3 = readDistance()/2.54;
   enableDisableSensor(2);
   double dis2 = readDistance()/2.54;
-  Serial.println(dis2);
-   if(dis2 >=200 ){
+//  Serial.println(dis2);
+   if(dis2 >=400 ){
       count++;
     }else{
       count=0;
@@ -258,7 +258,7 @@ void loop()
     delay(10);
 
     //Stop Automatically
-    if(distance1<20){
+    if(distance1>130){
       count1++;
     }else{
       count1=0;
@@ -266,6 +266,12 @@ void loop()
     if(count1==3){
       count1=0;
       esc.write(90);
+      delay(500);
+      esc.write(105);
+      delay(3500);
+      wheels.write(0);
+      esc.write(75);
+      delay(3750);
     }
   
 
