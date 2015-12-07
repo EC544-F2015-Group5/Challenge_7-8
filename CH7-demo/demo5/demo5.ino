@@ -38,7 +38,7 @@ int triggerPin1 = 13;
 long distance1;
 int sensorPins[] = {2,3}; // Array of pins connected to the sensor Power Enable lines
 int sensorPinsArraySize = 2; // The length of the array
-const int anPin1 = 0;
+const int anPin1 = 4;
 unsigned long pulse_width;
 int pinReceptor = A1;
 int sensorVal;
@@ -219,27 +219,16 @@ void loop()
   double dis3 = readDistance()/2.54;
   enableDisableSensor(2);
   double dis2 = readDistance()/2.54;
-  Serial.print("dis2:");
   Serial.println(dis2);
-  Serial.print("dis3:");
-  Serial.println(dis3);
-  Serial.print("!!!!!!!!!!!!");
-  Serial.println(dis2-dis3);
-//  delay(1000);
-  if(dis2< -1000 || dis3 < -1000 || dis2 == 0 || dis3 == 0){
-    return;
-  }
-  
-   if(dis2 >=400 ){
+   if(dis2 >=200 ){
       count++;
     }else{
-      count = 0;
+      count=0;
     }
     if(count==2){
       count=0;
       wheels.write(0);delay(3750);
     }
-    
   input = radToDeg(atan(abs(dis2 - dis3)/4.4));
 
     setpoint = 45;
@@ -274,16 +263,9 @@ void loop()
     }else{
       count1=0;
     }
-    if(count1==2){
+    if(count1==3){
       count1=0;
       esc.write(90);
-      delay(500);
-      esc.write(100);
-      delay(500);
-      esc.write(90);
-      delay(500);
-      esc.write(75);
-      wheels.write(0);
     }
   
 
