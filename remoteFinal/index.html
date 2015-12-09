@@ -1,0 +1,1657 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Crawler Visulization</title>
+	<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+	<script src="js/jquery-1.11.0.min.js"></script>
+	<link rel="stylesheet" href="css/controlPad.css" type = "text/css" media= "all" charset="utf-8">
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+	<link href="css/localize.css" rel="stylesheet" type="text/css" media="all"/>
+
+	<!-- Custom Theme files -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script src="js/prefixfree.min.js"></script>
+	
+	<script type="text/javascript" src="js/paper-full.js"></script>
+	<script type="text/javascript" src="jquery-1.11.0.min.js"></script>
+    <script type="text/javascript">
+$(document).ready(function(){
+  $("input").keydown(function(){
+    $("input").css("background-color","#FFFFCC");
+  });
+  $("input").keyup(function(){
+    $("input").css("background-color","#D6D6FF");
+  });
+});
+</script>
+  <style type="text/css">
+div.Total {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 90%;
+    height: 80%;
+}
+div.Point {
+position:absolute;
+margin-top: 545px;
+margin-left: 10px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+
+
+}
+div.Point1 {
+  position:absolute;
+margin-left: 10px;
+margin-top:495px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+
+}
+    div.Point2 {
+      position:absolute;
+ margin-left: 10px;
+margin-top:445px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+
+}
+    div.Point3 {
+      position:absolute;
+  margin-left: 10px;
+  margin-top: 395px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}
+    div.Point4 {
+      position:absolute;
+  margin-left: 10px;
+margin-top:345px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}
+    div.Point5 {
+      position:absolute;
+      margin-top:295px;
+  margin-left: 10px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}
+    div.Point6 {
+      position:absolute;
+
+  margin-left: 10px;
+margin-top: 245px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}
+    div.Point7 {
+      position:absolute;
+      margin-top:195px;
+  margin-left: 10px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}
+    div.Point8 {
+      position:absolute;
+  margin-left: 10px;
+margin-top: 145px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}
+div.Point9 {
+  position:absolute;
+margin-left: 10px;
+margin-top: 95px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}
+div.Point10 {
+position:absolute;
+margin-left: 10px;
+margin-top: 45px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}
+div.Point11 {
+position:absolute;
+margin-left: 180px;
+margin-top: 35px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}
+div.Point12 {
+position:absolute;
+margin-left: 340px;
+margin-top: 35px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}
+div.Point13 {
+position:absolute;
+margin-left: 500px;
+margin-top: 35px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}
+div.Point14 {
+position:absolute;
+margin-left: 660px;
+margin-top: 37px;
+/*margin-top: 230px; 193*/
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}
+div.Point15 {
+position:absolute;
+margin-left: 660px;
+margin-top: 77px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}
+div.Point16 {
+position:absolute;
+margin-left: 660px;
+margin-top: 117px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}
+div.Point17 {
+position:absolute;
+margin-left: 660px;
+margin-top: 157px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}
+div.Point18 {
+position:absolute;
+margin-left: 660px;
+margin-top: 197px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}
+div.Point19 {
+position:absolute;
+margin-left: 660px;
+margin-top: 237px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}
+div.Point20 {
+position:absolute;
+margin-left: 660px;
+margin-top: 277px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}
+div.Point21 {
+position:absolute;
+margin-left: 660px;
+margin-top: 317px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}
+div.Point22 {
+position:absolute;
+margin-left: 660px;
+margin-top: 357px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}
+div.Point23 {
+position:absolute;
+margin-left: 660px;
+margin-top: 397px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}
+div.Point24 {
+position:absolute;
+margin-left: 660px;
+margin-top: 437px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}
+div.Point25 {
+position:absolute;
+margin-left: 660px;
+margin-top: 477px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}
+div.Point26 {
+position:absolute;
+margin-left: 660px;
+margin-top: 517px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}
+div.Point27 {
+position:absolute;
+margin-left: 630px;
+margin-top: 550px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}
+div.Point28 {
+position:absolute;
+margin-left: 440px;
+margin-top: 550px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}
+/*div.Point29 {
+position:absolute;
+margin-left: 250px;
+margin-top: 550px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}*/
+div.Point29 {
+position:absolute;
+margin-left: 80px;
+margin-top: 550px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}
+div.Point30 {
+position:absolute;
+margin-left: 70px;
+margin-top: 550px;
+width:20px;
+height:20px;
+background: #bfbfbf;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+border-radius:50px;
+}
+
+	</style>
+	
+</head>
+<body>	
+    <canvas id="canvas" ></canvas>
+	
+	<div class="header">
+		<h3 class="main-head">Visulization</h3>
+		<!--Left part start here-->
+		<div class="header-bottom">
+			<div class="col-md-4 header-bot-left">
+			<!--Camera control start here-->
+			<div class="user-profile">
+				<div class="today-status" style="background-color:#474f70">
+					<div class="today-text"><h6>Webcam</h6></div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="user-prof-top" style="height:300px; background-color:#fafafa">
+        <!-- Get Webcan -->
+
+
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<!--camera control end here-->
+
+			<!--Remote control start here-->
+			<div class="ring-states">
+				<div class="today-status">
+					<div class="today-text">
+							<h6>Remote control</h6>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+
+				<div>
+					<!-- Control Pad -->
+					<!-- Forward Back Left Right -->
+					<div class="dpad-pane">
+						<div class="dpad-hole"></div>
+						<div id="dpad">
+							<canvas height="150" id="dpad-body" width="150"></canvas>
+							<button onclick="forward()" class="button" id="up"></button>
+							<button onclick="right()" class="button" id="right">
+							</button><button onclick="backward()" class="button" id="down"></button>
+							<button onclick="left()" class="button" id="left"></button>
+						</div>
+					</div>
+
+
+					<!-- Control Crawler Start or Stop -->
+					<div class="action-pane">
+						<div class="buttons">
+							<label class="label">Start<button onclick="forward()" class="button" id="b"></button></label>
+							<label class="label">Stop<button onclick="stop()" class="button" id="a"></button></label>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+			<!--Remote control end here-->
+		</div>
+	</div>
+  <!--End left part-->
+
+	<!--Right Part-->
+	<div class="col-md-8 header-bot-right">
+		<!--Localization start here-->
+		<div class="analytic">
+			<div class="analytic-top">
+				<div class="infograpy"><h5>Localization</h5></div>
+				<div class="clearfix"> </div>
+				<div style="height:620px; ">
+					<!-- Localization -->
+					<svg width="900" height="650" xmlns="http://www.w3.org/2000/svg">
+					 <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
+           	<g>
+						<!-- <rect fill="#ffffff" stroke="#3f3939" stroke-width="5" x="39.000007" y="97.999969" width="1007.000013" height="800.00002" id="svg_1" stroke-linecap="null" stroke-linejoin="null"/> -->
+						<rect fill="#474f70" stroke="#474f70" stroke-width="5" stroke-linejoin="null" stroke-linecap="null" x="197.999991" y="115.000004" width="443.999982" height="422" id="svg_2"/>
+						<line fill="none" stroke="#3f3939" stroke-width="5" stroke-linejoin="null" stroke-linecap="null" x1="375" y1="245" x2="375" y2="246" id="svg_10"/>
+						<!-- <rect fill="#5b5454" stroke="#565252" stroke-width="5" stroke-linejoin="null" stroke-linecap="null" x="360.000006" y="291.000004" width="292" height="360.000008" id="svg_13"/> -->
+						<!-- <rect fill="#5b5454" stroke="#7f0000" stroke-width="5" stroke-linejoin="null" stroke-linecap="null" x="329.000005" y="318.999998" width="354.999998" height="306.000007" id="svg_14"/> -->
+						<!-- <rect fill="#7f0000" stroke="#7f0000" stroke-width="5" stroke-linejoin="null" stroke-linecap="null" x="697" y="358" width="2" height="0" id="svg_15"/> -->
+						<!-- <line fill="none" stroke="#7f0000" stroke-width="5" stroke-linejoin="null" stroke-linecap="null" x1="416" y1="319.999987" x2="416" y2="622.999976" id="svg_16"/> -->
+						<!-- <line fill="none" stroke="#7f0000" stroke-width="5" stroke-linejoin="null" stroke-linecap="null" x1="597" y1="319.000018" x2="597" y2="621.999993" id="svg_17"/> -->
+						<path fill="#ffffff" stroke="#3f3939" stroke-width="5" stroke-linejoin="null" stroke-linecap="null" id="svg_29"/>
+						<rect fill="#bfbfbf" stroke="#c4c2c2" stroke-width="5" stroke-linejoin="null" stroke-linecap="null" x="0.000004" y="21.999985" width="188.99998" height="606.000017" id="svg_30"/>
+						<rect fill="#bfbfbf" stroke="#c4c2c2" stroke-width="5" stroke-linejoin="null" stroke-linecap="null" x="187.000049" y="21.499995" width="455.999965" height="86.000002" id="svg_42"/>
+						<rect fill="#bfbfbf" stroke="#c4c2c2" stroke-width="5" stroke-linejoin="null" stroke-linecap="null" x="648.000002" y="21.499962" width="188.999998" height="605.999968" id="svg_41"/>
+						<rect fill="#bfbfbf" stroke="#c4c2c2" stroke-width="5" stroke-linejoin="null" stroke-linecap="null" x="194.000024" y="544.499993" width="453.000003" height="83.000006" id="svg_43"/>
+						<ellipse fill="#ffffff" stroke="#c4c2c2" stroke-width="5" stroke-linejoin="null" stroke-linecap="null" cx="12.5" cy="121.500001" id="svg_44" rx="11.499999" ry="10.5"/>
+						<ellipse fill="#ffffff" stroke="#c4c2c2" stroke-width="5" stroke-linejoin="null" stroke-linecap="null" cx="179.000002" cy="329.500001" rx="10.500001" ry="11.5" id="svg_45"/>
+						<ellipse fill="#ffffff" stroke="#c4c2c2" stroke-width="5" stroke-linejoin="null" stroke-linecap="null" cx="12.5" cy="524" rx="10.5" ry="10.000001" id="svg_46"/>
+						<ellipse fill="#ffffff" stroke="#c4c2c2" stroke-width="5" stroke-linejoin="null" stroke-linecap="null" cx="659.000001" cy="329.500001" rx="10.5" ry="10.5" id="svg_47"/>
+						<text fill="#000000" stroke="#ffffff" stroke-width="0" stroke-linejoin="null" stroke-linecap="null" x="12.5" y="231.999994" id="svg_52" font-size="24" font-family="serif" text-anchor="middle" xml:space="preserve" transform="matrix(1,0,0,0.4230769276618957,1,22.499999821186066) ">3</text>
+						<text fill="#000000" stroke="#ffffff" stroke-width="0" stroke-linejoin="null" stroke-linecap="null" x="179" y="399.285694" id="svg_53" font-size="24" font-family="serif" text-anchor="middle" xml:space="preserve" transform="matrix(1,0,0,0.5384615659713745,0,113.53845477104187) ">4</text>
+						<text fill="#000000" stroke="#ffffff" stroke-width="0" stroke-linejoin="null" stroke-linecap="null" x="12.5" y="621.999997" id="svg_54" font-size="24" font-family="serif" text-anchor="middle" xml:space="preserve" transform="matrix(1,0,0,0.4615384638309479,0,241.7692297399044) ">2</text>
+						<text fill="#000000" stroke="#ffffff" stroke-width="0" stroke-linejoin="null" stroke-linecap="null" x="659.000001" y="399.500001" id="svg_55" font-size="24" font-family="serif" text-anchor="middle" xml:space="preserve" transform="matrix(1,0,0,0.5528846726609551,0,110.62498645796006) ">1</text>
+					 </g>
+
+					</svg>
+
+					<div class="Total">
+					 <div id="1" class="Point"  ></div>
+					 <div id="2" class="Point1"  ></div>
+					 <div id="3" class="Point2" ></div>
+					 <div id="4" class="Point3"  ></div>
+					 <div id="5" class="Point4"  ></div>
+					 <div id="6" class="Point5"  ></div>
+					 <div id="7" class="Point6"  ></div>
+					 <div id="8" class="Point7"  ></div>
+					 <div id="9" class="Point8"  ></div>
+					 <div id = "10" class = "Point9"></div>
+					 <div id = "11" class = "Point10"></div>
+					 <div id = "12" class = "Point11"></div>
+					 <div id = "13" class = "Point12"></div>
+					 <div id = "14" class = "Point13"></div>
+					 <div id = "15" class = "Point14"></div>
+					 <div id = "16" class = "Point15"></div>
+					 <div id = "17" class = "Point16"></div>
+					 <div id = "18" class = "Point17"></div>
+					 <div id = "19" class = "Point18"></div>
+					 <div id = "20" class = "Point19"></div>
+					 <div id = "21" class = "Point20"></div>
+					 <div id = "22" class = "Point21"></div>
+					 <div id = "23" class = "Point22"></div>
+					 <div id = "24" class = "Point23"></div>
+					 <div id = "25" class = "Point24"></div>
+					 <div id = "26" class = "Point25"></div>
+					 <div id = "27" class = "Point26"></div>
+					 <div id = "28" class = "Point27"></div>
+					 <div id = "29" class = "Point28"></div>
+					 <div id = "30" class = "Point29"></div>
+					 <div id = "31" class = "Point30"></div>
+					</div>
+
+				</div>
+			</div>
+    </div>
+	
+<ul id="messages"></ul>
+<!-- Send message to js file -->	
+<script src="/socket.io/socket.io.js"></script>
+<script type="text/paperscript" canvas="canvas">
+
+  var socket = io();
+  socket.on('action', function(data){
+    var div = document.getElementById("1");
+    var div1 = document.getElementById("2");
+    var div2 = document.getElementById("3");
+    var div3 = document.getElementById("4");
+    var div4 = document.getElementById("5");
+    var div5 = document.getElementById("6");
+    var div6 = document.getElementById("7");
+    var div7 = document.getElementById("8");
+    var div8 = document.getElementById("9");
+    var div9 = document.getElementById("10");
+    var div10 = document.getElementById("11");
+    var div11 = document.getElementById("12");
+    var div12 = document.getElementById("13");
+    var div13 = document.getElementById("14");
+    var div14 = document.getElementById("15");
+    var div15 = document.getElementById("16");
+    var div16 = document.getElementById("17");
+    var div17 = document.getElementById("18");
+    var div18 = document.getElementById("19");
+    var div19 = document.getElementById("20");
+    var div20 = document.getElementById("21");
+    var div21 = document.getElementById("22");
+    var div22 = document.getElementById("23");
+    var div23 = document.getElementById("24");
+    var div24 = document.getElementById("25");
+    var div25 = document.getElementById("26");
+    var div26 = document.getElementById("27");
+    var div27 = document.getElementById("28");
+    var div28 = document.getElementById("29");
+    var div29 = document.getElementById("30");
+    var div30 = document.getElementById("31");
+    if(data=="1"){
+      div.style.backgroundColor = "red";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+
+    }else if(data=="2"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "red";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+    }else if(data=="3"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "red";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+    }else if(data=="4"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "red";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+    }else if(data=="5"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "red";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+    }else if(data=="6"){
+
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "red";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+
+    }else if(data=="7"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "red";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+
+    }else if(data=="8"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "red";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+    }else if(data=="9"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "red";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+    }
+    else if(data == "10"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "red";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+    }
+    else if(data=="11"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "red";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+    }
+    else if(data=="12"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "red";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+    }
+    else if(data == "13"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "red";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+    }
+    else if(data =="14"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "red";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+    }
+    else if(data =="15"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "red";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+    }
+    else if(data == "16"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "red";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+    }
+    else if(data == "17"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "red";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+    }
+    else if(data =="18"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "red";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+    }
+    else if(data =="19"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "red";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+    }
+    else if(data == "20"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "red";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+    }
+    else if(data =="21"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "red";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+    }
+    else if(data =="22"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "red";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+    }
+    else if(data =="23"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "red";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+    }
+    else if(data =="24"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "red";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+    }
+    else if(data =="25"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "red";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+    }
+    else if(data =="26"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "red";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+    }
+    else if(data =="27"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "red";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+    }
+    else if(data =="28"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "red";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+    }
+    else if(data =="29"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "red";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "#bfbfbf";
+    }
+    else if(data =="30"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "red";
+      div30.style.backgroundColor = "#bfbfbf";
+    }
+    else if(data == "31"){
+      div.style.backgroundColor = "#bfbfbf";
+      div1.style.backgroundColor = "#bfbfbf";
+      div2.style.backgroundColor = "#bfbfbf";
+      div3.style.backgroundColor = "#bfbfbf";
+      div4.style.backgroundColor = "#bfbfbf";
+      div5.style.backgroundColor = "#bfbfbf";
+      div6.style.backgroundColor = "#bfbfbf";
+      div7.style.backgroundColor = "#bfbfbf";
+      div8.style.backgroundColor = "#bfbfbf";
+      div9.style.backgroundColor = "#bfbfbf";
+      div10.style.backgroundColor = "#bfbfbf";
+      div11.style.backgroundColor = "#bfbfbf";
+      div12.style.backgroundColor = "#bfbfbf";
+      div13.style.backgroundColor = "#bfbfbf";
+      div14.style.backgroundColor = "#bfbfbf";
+      div15.style.backgroundColor = "#bfbfbf";
+      div16.style.backgroundColor = "#bfbfbf";
+      div17.style.backgroundColor = "#bfbfbf";
+      div18.style.backgroundColor = "#bfbfbf";
+      div19.style.backgroundColor = "#bfbfbf";
+      div20.style.backgroundColor = "#bfbfbf";
+      div21.style.backgroundColor = "#bfbfbf";
+      div22.style.backgroundColor = "#bfbfbf";
+      div23.style.backgroundColor = "#bfbfbf";
+      div24.style.backgroundColor = "#bfbfbf";
+      div25.style.backgroundColor = "#bfbfbf";
+      div26.style.backgroundColor = "#bfbfbf";
+      div27.style.backgroundColor = "#bfbfbf";
+      div28.style.backgroundColor = "#bfbfbf";
+      div29.style.backgroundColor = "#bfbfbf";
+      div30.style.backgroundColor = "red";
+    }
+
+  });
+</script>
+<script>
+  var socket = io();
+</script>
+<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+/*
+  var socket = io();
+  $('form').submit(function(){
+    socket.emit('chat message', $('#m').val());
+    $('#m').val('');
+    return false;
+  });
+
+  socket.on('chat message', function(msg){
+    $('#messages').append($('<li>').text(msg));
+  });
+*/
+//   var buttonF = document.getElementById("up");
+//   var buttonB = document.getElementById("down");
+//   var buttonL = document.getElementById("left");
+//   var buttonR = document.getElementById("right");
+//   var buttonM = document.getElementById("a");
+
+  function forward()
+  {
+  	sendCtrlMsg("F");
+  }
+
+  function backward()
+  {
+  	sendCtrlMsg("B");	
+  }
+
+  function left()
+  {
+  	sendCtrlMsg("L");
+  }
+
+  function right()
+  {
+  	sendCtrlMsg("R");
+  }
+
+  function stop()
+  {
+  	sendCtrlMsg("S");
+  }
+
+  function sendCtrlMsg(msg)
+  {
+
+    socket.emit('chat message', msg)
+  }
+
+</script>
+</body>
+<script src="js/index.js"></script>
+</html>
