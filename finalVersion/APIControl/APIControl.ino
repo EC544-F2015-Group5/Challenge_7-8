@@ -59,7 +59,7 @@ XBeeResponse response = XBeeResponse();
 // create reusable response objects for responses we expect to handle 
 ZBRxResponse rx = ZBRxResponse();
 
-SoftwareSerial xbeeSerial(2,3);
+SoftwareSerial xbeeSerial(10,11);
 
 char C = 'N';
 
@@ -181,6 +181,7 @@ void setup()
   pid0.SetMode(AUTOMATIC);
   setpoint=45;
   pinMode(triggerPin1, OUTPUT);
+  Serial.flush();
 }
 
 // Get a measurement from the LIDAR Lite
@@ -199,7 +200,7 @@ void processResponse(){
        // int id = int(xbee.getResponse().getFrameData()[10]);
                
         
-          wheels.write(180);
+     //     wheels.write(180);
         
       }
   }
@@ -370,7 +371,8 @@ void autorun(){
       wheels.write(abs((wheels.read()+output/2)));
       
       }
-      
+
+    wheels.write(90);  
     esc.write(75);
     delay(10);
 
@@ -390,52 +392,55 @@ void autorun(){
       esc.write(75);
       delay(3750);
     }
+    Serial.flush();
 }
- 
+ void back(){
+  wheels.write(90);
+  esc.write(100);
+  Serial.flush();
+ }
 void loop()
 {
   
-
   if(Serial.available()){
-      rec = false;
+//      rec = false;
   // TODO: Receive ZB_RX, grab the payload and determine the operations
   b = Serial.read();
 
-  if(b == 'F')
+  if(b == 'G')
   {
-    autorun();
-    //esc.write(75);
-    rec = true;
-  }else if(b ==  'C'){
-    //wheels.write(90);
-    autorun();
+      autorun();
   }
   else if(b == 'B')
   {
-    esc.write(100);
+    back();
+    //esc.write(100);
   
-    rec = true;
+//    rec = true;
   }
   else if(b == 'L')
   {
     double temp = min( (0.8 * maxWheelOffset + wheelOffset), maxWheelOffset);
     
     wheels.write(90 + temp);
+    Serial.flush();
 
-    rec = true;
+//    rec = true;
   }
   else if(b == 'R')
   {
     double temp = min( (0.8 * maxWheelOffset + wheelOffset), maxWheelOffset);
     
     wheels.write(90 - temp);
+    Serial.flush();
 
-    rec = true;
+//    rec = true;
   }
-  else if(b == 'S')
+  else if(b == 'P')
   {
     esc.write(90);
-    rec = true;
+    Serial.flush();
+//    rec = true;
   }
   }
   //else{
